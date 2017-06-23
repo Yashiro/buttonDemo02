@@ -10,6 +10,9 @@
 
 @interface ViewController ()
 
+- (IBAction)move:(UIButton *)sender;
+
+
 @end
 
 @implementation ViewController
@@ -24,4 +27,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+// 点击上下左右执行该方法
+- (IBAction)move:(UIButton *)sender {
+    
+    NSLog(@"Move!");
+}
 @end
