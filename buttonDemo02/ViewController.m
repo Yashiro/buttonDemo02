@@ -36,32 +36,57 @@
     
     // 为每个按钮设置不同的Tag值，然后在这个方法中就可以根据sender.tag来判断用户当前点击的是哪个按钮
     
-    // 1. 获取原始的frame
-    CGRect originFrame = self.btnIcon.frame;
+    // 通过frame(原点)移动位置
+    {
+//        // 1. 获取原始的frame
+//        CGRect originFrame = self.btnIcon.frame;
+//        
+//        // 2. 修改frame
+//        switch (sender.tag) {
+//            case 10:
+//                // 上
+//                originFrame.origin.y -= 10;
+//                break;
+//                // 右
+//            case 20:
+//                originFrame.origin.x += 10;
+//                break;
+//                // 下
+//            case 30:
+//                originFrame.origin.y += 10;
+//                break;
+//                // 左
+//            case 40:
+//                originFrame.origin.x -= 10;
+//            default:
+//                break;
+//        }
+//        
+//        // 3. 重新赋值
+//        self.btnIcon.frame = originFrame;
+    }
     
-    // 2. 修改frame
+    // 通过center(中心点)移动位置
+    CGPoint centerPoint = self.btnIcon.center;
+    
     switch (sender.tag) {
         case 10:
-            // 上
-            originFrame.origin.y -= 10;
+            centerPoint.y -= 10;
             break;
-            // 右
         case 20:
-            originFrame.origin.x += 10;
+            centerPoint.x += 10;
             break;
-            // 下
         case 30:
-            originFrame.origin.y += 10;
+            centerPoint.y += 10;
             break;
-            // 左
         case 40:
-            originFrame.origin.x -= 10;
+            centerPoint.x -= 10;
+            break;
         default:
             break;
     }
     
-    // 3. 重新赋值
-    self.btnIcon.frame = originFrame;
+    self.btnIcon.center = centerPoint;
     
     NSLog(@"Move!");
 }
