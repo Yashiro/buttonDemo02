@@ -92,22 +92,37 @@
 }
 
 - (IBAction)scale:(UIButton *)sender {
-    CGRect originFrame = self.btnIcon.frame;
     
-    switch (sender.tag) {
-        case 50:
-            originFrame.size.height += 10;
-            originFrame.size.width += 10;
-            break;
-        case 60:
-            originFrame.size = CGSizeMake(originFrame.size.width - 10, originFrame.size.height - 10);
-        default:
-            break;
+    // 通过frame放大缩小
+    {
+        CGRect originFrame = self.btnIcon.frame;
+        
+        switch (sender.tag) {
+            case 50:
+                originFrame.size.height += 10;
+                originFrame.size.width += 10;
+                break;
+            case 60:
+                originFrame.size = CGSizeMake(originFrame.size.width - 10, originFrame.size.height - 10);
+            default:
+                break;
+        }
+        
+        self.btnIcon.frame = originFrame;
     }
     
-    self.btnIcon.frame = originFrame;
+    // 通过bounds放大缩小
+    CGRect boundsRect = self.btnIcon.bounds;
     
+    if (sender.tag == 50) {
+        boundsRect.size.height += 10;
+        boundsRect.size.width += 10;
+    } else {
+        boundsRect.size.height -= 10;
+        boundsRect.size.width -= 10;
+    }
     
+    self.btnIcon.bounds = boundsRect;
     
     NSLog(@"Scale!");
 }
